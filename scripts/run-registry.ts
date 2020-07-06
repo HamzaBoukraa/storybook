@@ -29,7 +29,9 @@ const startVerdaccio = (port: number) => {
     new Promise((resolve) => {
       const cache = path.join(__dirname, '..', '.verdaccio-cache');
       const config = {
-        ...yaml.safeLoad(fs.readFileSync(path.join(__dirname, 'verdaccio.yaml'), 'utf8')),
+        ...(yaml.safeLoad(
+          fs.readFileSync(path.join(__dirname, 'verdaccio.yaml'), 'utf8')
+        ) as object),
         self_path: cache,
       };
 
